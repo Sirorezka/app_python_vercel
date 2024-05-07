@@ -12,6 +12,10 @@ class GETHandler(BaseHTTPRequestHandler):
         self.wfile.write(f'Python version {python_version}'.encode('utf-8'))
     
 
+# variable required for Vercel
+handler = GETHandler
+
+
 def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
   server_address = ('', 8000)
   httpd = server_class(server_address, handler_class)
@@ -27,4 +31,5 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
+    # for running locally
     run(handler_class=GETHandler)
